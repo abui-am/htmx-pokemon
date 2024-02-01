@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Detail</title>
+  {{ template "header.html" }}
+  <body>
+    <div class="max-w-md mx-auto grid grid-cols-2 gap-4">
+      <div class="flex flex-col items-center rounded-md border">
+        <img
+          class="text-base font-bold"
+          src="{{ .pokemon.Sprites.FrontDefault }}"
+          alt="{{ .pokemon.Name }}"
+        />
+        <h2 class="text-2xl font-bold">{{ .pokemon.Name }}</h2>
+        <!-- Types -->
+        <div class="flex flex-col items-center">
+          <h2 class="text-xl font-bold">Types</h2>
+          <div class="flex gap-4">
+            {{ range .pokemon.Types }}
+            <span class="text-base">{{ .Type.Name }}</span>
+            {{ end }}
+          </div>
+       
+      </div>
+    </div>
+  </body>
+</html>

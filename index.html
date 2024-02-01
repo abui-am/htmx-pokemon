@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Main</title>
+  {{ template "header.html" }}
+  <body>
+    <input
+      hx-get="/action/search"
+      name="query"
+      hx-trigger="keyup changed delay:500ms"
+      hx-target="#pokemon-list"
+      hx-swap="innerHTML"
+      class="w-full p-2 border rounded-md"
+      placeholder="Search"
+      hx-indicator="#spinner"
+    />
+    <div id="spinner" class="htmx-indicator">Loading...</div>
+    <div
+      hx-boost="true"
+      hx-target="body"
+      class="max-w-md mx-auto grid grid-cols-2 gap-4"
+      id="pokemon-list"
+    >
+      {{ range .pokemons}} {{template "pokemon_list" .}} {{ end }}
+    </div>
+  </body>
+</html>
